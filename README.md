@@ -25,6 +25,23 @@
 ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Para integrar la autenticación de dos factores (2FA) en una aplicación Node.js, puedes seguir estos pasos:
+
+Instala la dependencia speakeasy utilizando el comando npm install speakeasy.
+
+Genera una clave secreta para el usuario en tu base de datos.
+
+Utiliza la clave secreta para generar un código QR utilizando la dependencia qrcode. Este código QR se mostrará al usuario y se escaneará con una aplicación de autenticación 2FA como Google Authenticator.
+
+Cuando el usuario escanea el código QR, se genera un token único que se actualizará cada 30 segundos. Este token se verificará cada vez que el usuario intente iniciar sesión en la aplicación.
+
+Para verificar el token, utiliza la dependencia speakeasy para generar el token esperado en función de la clave secreta almacenada y el tiempo actual. Luego, compara el token generado con el token enviado por el usuario.
+
+Si los tokens coinciden, permite que el usuario inicie sesión en la aplicación. Si los tokens no coinciden, muestra un mensaje de error al usuario y solicita que vuelva a intentarlo.
+
+Puedes configurar la duración de los tokens y otros parámetros utilizando las opciones de configuración disponibles en la dependencia speakeasy.
+
+Este es un ejemplo de cómo podrías integrar la autenticación 2FA en una aplicación Node.js. Sin embargo, ten en cuenta que la seguridad es un tema crítico y debes asegurarte de seguir las mejores prácticas de seguridad en la implementación de la autenticación 2FA en tu aplicación.
 
 ## Installation
 
